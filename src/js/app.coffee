@@ -66,6 +66,14 @@ $attribute = mg([
   'old'
   'married'
   'teenage'
+  'sexy'
+  'handsome'
+  'young'
+  'grown up'
+  'disabled'
+  'sick'
+  'strong'
+  'muscular'
 ])
 
 $relationship = mg([
@@ -79,6 +87,13 @@ $relationship = mg([
   'sister'
   'mother'
   'father'
+  'mentor'
+  'business partner'
+  'close friend'
+  'former partner'
+  'son'
+  'kid'
+  'daughter'
 ])
 
 $action = mg([
@@ -89,7 +104,9 @@ $action = mg([
 ])
 
 $actor = mg([
+  '#attribute# #attribute# #class#'
   '#attribute# #class#'
+  '#class#'
 ])
 
 $article = mg([
@@ -97,6 +114,12 @@ $article = mg([
   'machine'
   'shotgun'
   'zombie hand'
+  'bag of coffee beans'
+  'purified water'
+  'polluted river water'
+  'mug'
+  'apple tree'
+  'jug of black water'
 ])
 
 $frame = mg([
