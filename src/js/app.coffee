@@ -17,7 +17,11 @@ ff = (frame)->
   frame.replace split_regex, (trunk, inner, offset, string)->
     return trunk unless trunk.match(match_regex)
     mgName = "$#{trunk.match(match_regex)[1]}"
-    return ff(window[mgName].next().value)
+    fnName = mgName.toLowerCase()
+    if fnName != mgName
+      return S(ff(window[fnName].next().value)).capitalize()
+    else
+      return ff(window[fnName].next().value)
 
 $name = mg([
   'Logus'
@@ -58,6 +62,9 @@ $class = mg([
   'barber'
   'scholar'
   'engineer'
+  'bard'
+  'singer'
+  'dancer'
 ])
 
 $attribute = mg([
@@ -101,11 +108,19 @@ $action = mg([
   'tricked a #actor# and got caught'
   'went out with his #relationship#, and got shot by #actor# in the wild'
   'slept with his #relationship#\'s #relationship#'
+  'reported to his #relationship# that he #action#'
+  'had a duel with #actor#, both were badly injured'
+  'broke into #actor#\'s place'
+  'betrayed his #relationship#'
+  'starved to death'
+  'sold a #quality# #article# at ridiculous price'
 ])
 
 $actor = mg([
   '#attribute# #attribute# #class#'
   '#attribute# #class#'
+  '#class#'
+  '#class#'
   '#class#'
 ])
 
@@ -122,15 +137,31 @@ $article = mg([
   'jug of black water'
 ])
 
+$quality = mg([
+  'real nice'
+  'high quality'
+  'broken but rare'
+  'extremely rare'
+  'one of a kind'
+  'fresh'
+])
+
 $frame = mg([
-  '#time#, a #actor# #action#. I bet they won\'t do it again any time soon.'
-  '#time#, a #actor# told me that he #action#, now he is on escape.'
+  '#Time#, a #actor# #action#. I bet they won\'t do it again any time soon.'
+  '#Time#, a #actor# told me that he #action#, now he is on escape.'
   'Hey, do you know what happened to the #actor# since we talked about him #time#?'
-  'My #relationship# told me he got a real nice #article# from a #actor#. I can hook you up if you\'re interested.'
+  'Hey, you know that #actor# we talked about #time# #action#?'
+  'My #relationship# told me he got a #quality# #article# from a #actor#. I can hook you up if you\'re interested.'
+  'Man I miss the old days, when my #relationship# #action# all the time.'
+  'You selling #quality# #article#? My #relationship# sent me.'
+  'You selling #quality# #article#? My #relationship# might wanna get one.'
+  'You selling #quality# #article#? Don\'t let those #actor# get it before I do.'
+  'Everybody knows #article# is hard to come by these days, especially #quality# ones. Now I have a connection, he\'s a #actor#, interested?'
 ])
 
 $story = mg([
   '#frame#'
 ])
 
-document.getElementById('content').innerHTML = ff($story.next().value)
+for k in [1..10]
+  document.getElementById('content').innerHTML += "<p>#{ff($story.next().value)}</p>"
