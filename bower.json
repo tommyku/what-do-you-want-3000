@@ -5,5 +5,6 @@
     "Tommy Ku <tommyku@eventxtra.com>"
   ],
   "dependencies": {
+    "string": "^3.3.1"
   }
 }
